@@ -1,0 +1,82 @@
+/* CarList.module.css */
+.carContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+.carCard {
+  width: 274px;
+  padding-bottom: 50px;
+}
+
+.carImg {
+  height: 268px;
+}
+
+.paragraphContainer {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 14px;
+}
+
+.carParagraph {
+  color: #121417;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.carModel {
+  color: #3470ff;
+}
+
+.listContainer {
+  height: 40px;
+  overflow: hidden;
+  padding-top: 8px;
+}
+
+.carList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  color: rgba(18, 20, 23, 0.5);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  gap: 7px;
+}
+
+.stick {
+  margin-left: 6px;
+  border-right: 1px solid rgb(18, 20, 23, 0.5);
+}
+
+.buttonContainer {
+  padding-top: 28px;
+}
+
+.carButton {
+  width: 100%;
+  height: 44px;
+  padding: 12px 99px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 12px;
+  background: #3470ff;
+  color: #ffffff;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.carButton:active,
+.carButton:hover {
+  background-color: #0b44cd;
+}

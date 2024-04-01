@@ -1,0 +1,25 @@
+.homeContainer {
+  padding-top: 200px;
+}
+.homeTitle {
+  color: #121417;
+  font-size: 40px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.homeParagraph {
+  font-size: 26px;
+  padding: 20px;
+  color: #121417;
+}
+
+.homeLink {
+  font-size: 26px;
+  color: #3470ff;
+}
+
+.homeLink:active,
+.homeLink:hover {
+  color: #0b44cd;
+}

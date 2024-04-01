@@ -1,0 +1,20 @@
+.navContainer {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navList {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fbfbfb;
+  padding: 10px 20px;
+}
+
+.navItem {
+  color: #3470ff;
+  font-size: 32px;
+}
+
+.navItem:active,
+.navItem:hover {
+  color: #0b44cd;
+}
