@@ -48,7 +48,7 @@
 .carImg {
   border-radius: 14px;
   width: 469px;
-  height: 248px;
+  max-height: 400px;
   object-fit: cover;
   flex-grow: 1;
 }
