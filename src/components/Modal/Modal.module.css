@@ -121,7 +121,7 @@
   gap: 7px;
 }
 
-.rentalConditionsTitleContainer {
+.rentalConditionsContainer {
   padding-top: 24px;
 }
 
@@ -153,4 +153,19 @@
 
 .color {
   color: #3470ff;
+}
+
+.rentalContactContainer {
+  padding-top: 24px;
+}
+
+.rentalContact {
+  width: 168px;
+  border-radius: 12px;
+  background-color: #3470ff;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 12px 50px;
 }

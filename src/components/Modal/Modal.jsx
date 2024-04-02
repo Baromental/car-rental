@@ -101,6 +101,9 @@ const Modal = ({ isOpen, onClose, car }) => {
           </li>
         </ul>
         </div>
+        <div className={s.rentalContactContainer}>
+          <a className={s.rentalContact} href="tel:+380730000000">Rental car</a>
+        </div>
       </div>
     </div>,
     document.body
