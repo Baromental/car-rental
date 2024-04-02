@@ -1,28 +1,50 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { fetchCarData } from './operations';
+// carsSlice.js
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import { fetchCarsDataThunk, fetchMoreCarsDataThunk } from './operations';
 
 const carsSlice = createSlice({
   name: 'cars',
   initialState: {
-    data: [],
-    status: 'idle',
+    cars: [],
+    loading: false,
     error: null,
+    loadMoreCars: true,
+    currentPage: 1,
+    totalCars: 0,
   },
-  reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchCarData.pending, (state) => {
-        state.status = 'loading';
+      .addCase(fetchCarsDataThunk.fulfilled, (state, { payload }) => {
+        state.cars = payload;
+        state.loading = false;
       })
-      .addCase(fetchCarData.fulfilled, (state, action) => {
-        state.status = 'succeeded';
-        state.data = action.payload;
+      .addCase(fetchMoreCarsDataThunk.fulfilled, (state, { payload }) => {
+        state.cars = [...state.cars, ...payload];
+        state.loadMoreCars = payload.length > 0;
+        state.currentPage = state.currentPage + 1;
+        state.loading = false;
       })
-      .addCase(fetchCarData.rejected, (state, action) => {
-        state.status = 'failed';
-        state.error = action.error.message;
-      });
+      .addMatcher(
+        isAnyOf(fetchCarsDataThunk.pending, fetchMoreCarsDataThunk.pending),
+        (state) => {
+          state.loading = true
+          state.error = null
+        }
+      )
+      .addMatcher(
+        isAnyOf(fetchCarsDataThunk.rejected, fetchMoreCarsDataThunk.rejected),
+        (state, { payload }) => {
+          state.loading = false
+          state.error = payload
+        }
+      )
+  },
+  selectors: {
+    selectCarsData: state => state.cars,
+    selectCurrentPage: state => state.currentPage,
+    selectTotalCars: state => state.totalCars,
   },
 });
 
 export default carsSlice.reducer;
+export const { selectCarsData, selectCurrentPage, selectTotalCars } = carsSlice.selectors;

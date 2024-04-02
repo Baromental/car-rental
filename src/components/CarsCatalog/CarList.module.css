@@ -1,4 +1,10 @@
 /* CarList.module.css */
+.elementContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .carContainer {
   display: flex;
   flex-direction: row;
@@ -11,8 +17,37 @@
   padding-bottom: 50px;
 }
 
+.imgContainer {
+  position: relative;
+}
+
 .carImg {
+  border-radius: 14px;
   height: 268px;
+  object-fit: cover;
+}
+
+.iconButton {
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  padding: 0;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: #fff;
+}
+
+.iconActive {
+  width: 18px;
+  height: 18px;
+  stroke: rgba(52, 112, 255, 1);
+  fill: rgba(52, 112, 255, 1);
 }
 
 .paragraphContainer {
@@ -79,4 +114,21 @@
 .carButton:active,
 .carButton:hover {
   background-color: #0b44cd;
+}
+
+.carButton:focus {
+  outline: none;
+}
+
+.loadButton {
+  max-width: 100px;
+  color: #3470ff;
+  font-family: Manrope;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  text-decoration-line: underline;
+  background: transparent;
+  border: none;
 }
