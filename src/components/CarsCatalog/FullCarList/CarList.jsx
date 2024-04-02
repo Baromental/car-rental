@@ -5,6 +5,7 @@ import { fetchCarsDataThunk, fetchMoreCarsDataThunk } from '../../../redux/opera
 import { selectCarsData, selectCurrentPage } from '../../../redux/carsSlice';
 import { addToFavorites, removeFromFavorites, selectFavorites } from '../../../redux/favoritesSlice';
 import Modal from '../../Modal/Modal';
+import Select from 'react-select';
 import icons from '../../../images/icons.svg';
 import s from '../CarList.module.css';
 
@@ -15,10 +16,17 @@ const CarList = () => {
   const favoritesData = useSelector(selectFavorites);
   const [selectedCar, setSelectedCar] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [searchText, setSearchText] = useState('');
+  const [makeOptions, setMakeOptions] = useState([]);
 
   useEffect(() => {
     dispatch(fetchCarsDataThunk());
   }, [dispatch]);
+
+  useEffect(() => {
+    const uniqueMakes = [...new Set(cars.map(car => ({ label: car.make, value: car.make })))];
+    setMakeOptions(uniqueMakes);
+  }, [cars]);
 
   const favorites = (car) => favoritesData.some(favorite => favorite.id === car.id);
 
@@ -44,11 +52,25 @@ const CarList = () => {
     dispatch(fetchMoreCarsDataThunk(currentPage + 1));
   };
 
+  const handleSearch = () => {
+  };
+
   return (
     <div className={s.elementContainer}>
+      <div className={s.searchContainer}>
+        <Select
+          options={makeOptions}
+          isClearable
+          onChange={(selectedOption) => setSearchText(selectedOption ? selectedOption.value : '')}
+          placeholder="Enter the text:"
+        />
+        <button className={s.searchButton} onClick={handleSearch}>Search</button>
+      </div>
       <div className={s.carContainer}>
-      {cars.map((car) => (
-        <div className={s.carCard} key={car.id}>
+        {cars
+          .filter(car => car.make.toLowerCase().includes(searchText.toLowerCase()))
+          .map((car) => (
+            <div className={s.carCard} key={car.id}>
           <div className={s.imgContainer}>
             <img className={s.carImg} src={car.img} alt={`${car.make} ${car.model}`} />
             <button className={s.iconButton} onClick={() => handleToggleFavorites(car)}>

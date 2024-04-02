@@ -16,7 +16,6 @@ const favoritesSlice = createSlice({
   },
   selectors: {
     selectFavorites: state => {
-      // console.log(state.favorites); // Виводимо масив фейворітів в консоль
       return state.favorites;
     },
   },

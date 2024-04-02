@@ -94,6 +94,38 @@
   padding-top: 28px;
 }
 
+.searchContainer {
+  display: flex;
+  padding-bottom: 50px;
+  gap: 18px;
+}
+
+.searchButton {
+  width: 136px;
+  height: 48px;
+  padding: 14px 44px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 12px;
+  background: #3470ff;
+  color: #ffffff;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.searchButton:active,
+.searchButton:hover {
+  background-color: #0b44cd;
+}
+
+.searchButton:focus {
+  outline: none;
+}
+
 .carButton {
   width: 100%;
   height: 44px;
